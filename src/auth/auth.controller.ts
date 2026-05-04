@@ -15,6 +15,11 @@ export class AuthController {
     return this.authService.create(createAuthDto);
   }
 
+  @Post('/refresh')
+  refreshToken() {
+    return this.authService.refreshToken();
+  }
+
   @Post('/logout')
   logout(@Body() createAuthDto: CreateAuthDto) {
     return this.authService.create(createAuthDto);

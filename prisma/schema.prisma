@@ -36,7 +36,7 @@ model User {
   updatedAt DateTime @updatedAt
 
   userSessions UserSession[]
-  accountInfos AccountInfo[]
+  accountInfos AccountInfo?
   reports      Report[]
 }
 
@@ -59,9 +59,8 @@ model UserSession {
 model AccountInfo {
   accountInfoId String @id @default(cuid())
 
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
-
+  userId     String  @unique
+  user       User    @relation(fields: [userId], references: [id])
   firstName  String
   middleName String?
   lastName   String
